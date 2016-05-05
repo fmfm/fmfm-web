@@ -1,0 +1,1 @@
+server ENV['SSH_IP'], user: ENV['SSH_USER'], roles: %w{web app db}, port: ENV['SSH_PORT']
