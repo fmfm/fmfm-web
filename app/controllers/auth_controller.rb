@@ -2,7 +2,24 @@ class AuthController < ApplicationController
 
   def callback
     auth = request.env["omniauth.auth"]
-    redirect_to '/'
+    user_sign = UserSign.where(:provider => auth[:provider], :uid => auth[:uid]).first_or_initialize
+
+    if user_sign.id
+    else
+      ActiveRecord::Base.transaction do
+        user = User.new
+        user.name = auth[:info][:name]
+        user.save
+        user_sign.user_id = user.id
+        user_sign.save
+      end
+    end
+
+    unless user_sign.user
+      raise
+    end
+
+    redirect_to "/users/#{user_sign.user_id}"
   end
 
   def failure
