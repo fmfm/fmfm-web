@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160508024544) do
+ActiveRecord::Schema.define(version: 20160508095300) do
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer  "entry_id",   limit: 4,                    null: false
+    t.integer  "user_id",    limit: 4,                    null: false
+    t.text     "content",    limit: 65535
+    t.integer  "count",      limit: 4,     default: 0,    null: false
+    t.boolean  "active",                   default: true, null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
 
   create_table "entries", force: :cascade do |t|
     t.text     "url",         limit: 65535,                null: false
