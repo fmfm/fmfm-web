@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @bookmarks = Bookmark.includes(:entry).active.where(:user_id => @user.id).order(:id).reverse_order.page(params[:page])
   end
 
   def edit
