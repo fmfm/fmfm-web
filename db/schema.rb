@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160507025953) do
+ActiveRecord::Schema.define(version: 20160508024544) do
+
+  create_table "entries", force: :cascade do |t|
+    t.text     "url",         limit: 65535,                null: false
+    t.text     "title",       limit: 65535
+    t.text     "description", limit: 65535
+    t.text     "image",       limit: 65535
+    t.boolean  "active",                    default: true, null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
 
   create_table "user_signs", force: :cascade do |t|
     t.integer  "user_id",    limit: 4,   null: false
