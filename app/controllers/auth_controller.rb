@@ -19,6 +19,8 @@ class AuthController < ApplicationController
       raise
     end
 
+    set_login_user_id(user_sign.user_id)
+
     redirect_to "/users/#{user_sign.user_id}"
   end
 
