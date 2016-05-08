@@ -1,4 +1,5 @@
 class EntriesController < ApplicationController
+  include FetchEntry
 
   def index
     @entries = Entry.page(params[:page])
