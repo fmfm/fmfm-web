@@ -4,9 +4,9 @@
       %a.Logo{:href => '/'} fmfm
     %li.Footer-item
       - if login_user
-        %a{:href => '/'} MyPage
+        %a{:href => "/users/#{login_user.id}"} MyPage
       - else
-        %a{:href => "/auth/twitter?use_authenticate=true"} SignIn
+        %a{:href => '/auth/twitter?use_authenticate=true'} SignIn
     %li.Footer-item
       %a{:href => 'https://github.com/fmfm/fmfm-web', :target => '_blank'} GitHub
 
