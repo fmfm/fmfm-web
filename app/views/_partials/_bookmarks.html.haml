@@ -1,0 +1,8 @@
+%ul
+  - items.each do |bookmarks|
+    %li
+      %a{:href => bookmarks.entry.url, :target => '_blank'}= bookmarks.entry.title
+      = bookmarks.created_at.to_s(:display)
+
+- if kaminari
+  = paginate kaminari

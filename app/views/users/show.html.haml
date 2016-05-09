@@ -6,9 +6,4 @@
       = text_field_tag :url, nil, {:type => 'url', :class => 'BookmarkForm-input', :placeholder => 'URL', :required => true}
       = submit_tag '追加', :class => 'BookmarkForm-submit'
 
-%ul
-  - @bookmarks.each do |bookmarks|
-    %li
-      %a{:href => bookmarks.entry.url, :target => '_blank'}= bookmarks.entry.title
-
-= paginate @bookmarks
+= render '_partials/bookmarks', :items => @bookmarks, :kaminari => @bookmarks
