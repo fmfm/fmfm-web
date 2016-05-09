@@ -1,8 +1,24 @@
-%ul
-  - items.each do |bookmarks|
-    %li
-      %a{:href => bookmarks.entry.url, :target => '_blank'}= bookmarks.entry.title
-      = bookmarks.created_at.to_s(:display)
+%ul.BookmarkList
+  - items.each do |bookmark|
+    %li.Bookmark
+      %a.Bookmark-item.u-flex{:href => bookmark.entry.url, :target => '_blank'}
+        %div.Bookmark-image{:style => "background-image:url(#{bookmark.entry.image})"}
+        %div.Bookmark-content.u-sizeFill
+          %p.Bookmark-title
+            = bookmark.entry.title
+            %span.Bookmark-host.u-inlineBlock
+              %span.octicon.octicon-location
+              %spab.u-alignMiddle= URI.parse(bookmark.entry.url).host
+          %p.Bookmark-description= bookmark.entry.description
+
+          %div.Bookmark-metadata
+            %span.Bookmark-metadata-item.u-inlineBlock
+              %span.octicon.octicon-flame
+              %spab.u-alignMiddle= Bookmark.active.where(:entry_id => bookmark.entry.id).sum(:count)
+            %spab.Bookmark-metadata-item.u-inlineBlock
+              %span.octicon.octicon-clock
+              %spab.u-alignMiddle= bookmark.created_at.to_s(:display)
 
 - if kaminari
-  = paginate kaminari
+  %div.Pagination
+    = paginate kaminari

@@ -1,3 +1,7 @@
-fmfm
+- if login_user
+  %h1.Title
+    %span.Logo fmfm
+- else
+  = render 'sign_in'
 
 = render '_partials/bookmarks', :items => @bookmarks, :kaminari => @bookmarks

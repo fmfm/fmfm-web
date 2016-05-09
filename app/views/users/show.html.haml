@@ -1,4 +1,8 @@
-= @user.name
+%h1.Title
+  = @user.name
+  %span.Title-min
+    の
+    %a.Logo{:href => '/'} fmfm
 
 %div.BookmarkForm
   = form_tag "/bookmarks", :method => :post do
