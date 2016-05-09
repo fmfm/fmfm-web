@@ -1,3 +1,9 @@
+- content_for :head do
+  %link{:rel => 'canonical', :href => Settings.root}><
+  %meta{:property => 'og:url',  :content => Settings.root}
+  %meta{:property => 'og:title',        :content => 'fmfm'}
+  %meta{:property => 'og:description',  :content => 'fmfm'}
+
 - if login_user
   %h1.Title
     %span.Logo fmfm
