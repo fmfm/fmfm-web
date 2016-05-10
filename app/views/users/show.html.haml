@@ -1,7 +1,7 @@
 - content_for :title, "#{@user.name}のfmfm"
 - content_for :head do
-  %link{:rel => 'canonical', :href => Settings.root + "users/#{@user.id}"}><
-  %meta{:property => 'og:url',  :content => Settings.root + "users/#{@user.id}"}
+  %link{:rel => 'canonical', :href => Settings.root + "/users/#{@user.id}"}><
+  %meta{:property => 'og:url',  :content => Settings.root + "/users/#{@user.id}"}
   %meta{:property => 'og:title',        :content => "#{@user.name}のfmfm"}
   %meta{:property => 'og:description',  :content => "#{@user.name}のfmfm"}
 

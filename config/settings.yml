@@ -1,4 +1,4 @@
-root: "https://fmfm.ozonicsky.com/"
+root: "https://fmfm.ozonicsky.com"
 
 bot:
   ua: "Mozilla/5.0 (compatible; fmfm crawler/1.0; +https://fmfm.ozonicsky.com)"
