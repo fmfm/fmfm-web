@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160508095300) do
+ActiveRecord::Schema.define(version: 20160510191938) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer  "entry_id",   limit: 4,                    null: false
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 20160508095300) do
     t.string   "uid",        limit: 255, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "user_tokens", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4,                  null: false
+    t.string   "token",      limit: 255,                null: false
+    t.boolean  "active",                 default: true, null: false
+    t.datetime "expired_at"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "users", force: :cascade do |t|
