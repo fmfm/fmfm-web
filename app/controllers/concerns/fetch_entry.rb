@@ -1,7 +1,7 @@
 module FetchEntry
   extend ActiveSupport::Concern
 
-  def get_entry(url)
+  def get_entry(url, times = 0)
     unless url =~ URI::regexp
       raise
     end
@@ -28,7 +28,10 @@ module FetchEntry
       end
 
       unless url == information[:url]
-        return get_entry(information[:url])
+        times += 1
+        if times > 2
+          return get_entry(information[:url], times)
+        end
       end
 
       entry.title = information[:title]
@@ -86,7 +89,7 @@ module FetchEntry
       end
     end
 
-    information.delete_if{ |k, v| v.nil? }
+    information.delete_if{ |_, v| v.nil? }
     information
   end
 
