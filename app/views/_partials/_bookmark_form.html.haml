@@ -1,0 +1,5 @@
+%div.BookmarkForm
+  = form_tag "/bookmarks", :method => :post do
+    %div.u-flex
+      = text_field_tag :url, nil, {:type => 'url', :class => 'BookmarkForm-input', :placeholder => 'URL', :required => true}
+      = submit_tag '追加', :class => 'BookmarkForm-submit'

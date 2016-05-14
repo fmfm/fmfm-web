@@ -11,10 +11,5 @@
     の
     %a.Logo{:href => '/'} fmfm
 
-%div.BookmarkForm
-  = form_tag "/bookmarks", :method => :post do
-    %div.u-flex
-      = text_field_tag :url, nil, {:type => 'url', :class => 'BookmarkForm-input', :placeholder => 'URL', :required => true}
-      = submit_tag '追加', :class => 'BookmarkForm-submit'
-
+= render '_partials/bookmark_form'
 = render '_partials/bookmarks', :items => @bookmarks, :kaminari => @bookmarks
