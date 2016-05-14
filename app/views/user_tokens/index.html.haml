@@ -1,0 +1,10 @@
+%h1.Title Token
+
+%div.BookmarkForm
+  = form_for UserToken.new do |f|
+    = f.submit '新規トークン発行'
+
+%ul
+  - @user_tokens.each do |user_token|
+    %li
+      = user_token.created_at.to_s(:full)
