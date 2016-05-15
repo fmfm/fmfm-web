@@ -1,5 +1,6 @@
 class BookmarksController < ApplicationController
   include FetchEntry
+  before_action :login_user_only
 
   def create
     unless login_user

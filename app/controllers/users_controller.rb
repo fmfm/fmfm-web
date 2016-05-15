@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :login_user_only, :only => [:edit, :update, :destroy]
   before_action :set_user, :only => [:show, :edit, :update, :destroy]
 
   def index
@@ -13,14 +14,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.name = params[:user][:name]
-    @user.save
-    redirect_to "/users/#{@user.id}"
+    login_user.name = params[:user][:name]
+    login_user.save
+    redirect_to "/users/#{login_user.id}"
   end
 
   def destroy
-    @user.active = false
-    @user.save
+    login_user.active = false
+    login_user.save
     redirect_to '/'
   end
 

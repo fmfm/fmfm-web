@@ -4,7 +4,6 @@ class UserTokensController < ApplicationController
 
   def index
     @user_tokens = UserToken.active.where(:user_id => login_user.id).page(params[:page])
-    render :json => SecureRandom.hex(64)
   end
 
   def show
@@ -28,12 +27,6 @@ class UserTokensController < ApplicationController
 
 
   private
-  def login_user_only
-    unless login_user
-      raise
-    end
-  end
-
   def set_user_token
     @user_token = UserToken.where(:user_id => login_user.id).find(params[:id])
   end

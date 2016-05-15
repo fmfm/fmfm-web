@@ -7,6 +7,15 @@ class ApplicationController < ActionController::Base
   def login_user
     if login_user_id
       @login_user ||= User.active.where(:id => login_user_id).first
+    elsif params[:token]
+      @login_user_token ||= UserToken.where(:token => params[:token]).first
+      @login_user ||= User.active.find(@login_user_token.user_id)
+    end
+  end
+
+  def login_user_only
+    unless login_user
+      raise
     end
   end
 
