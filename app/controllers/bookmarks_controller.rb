@@ -20,7 +20,15 @@ class BookmarksController < ApplicationController
     bookmark.count += 1 if 10 > bookmark.count
     bookmark.save
 
-    redirect_to "/users/#{login_user.id}"
+    respond_to do |format|
+      format.html do
+        redirect_to "/users/#{login_user.id}"
+      end
+      format.json do
+        render :json => bookmark
+      end
+    end
+
   end
 
 end
