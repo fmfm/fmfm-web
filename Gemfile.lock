@@ -134,6 +134,7 @@ GEM
       omniauth-oauth (~> 1.1)
     open_uri_redirections (0.2.1)
     rack (1.6.4)
+    rack-cors (0.4.0)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.6)
@@ -243,6 +244,7 @@ DEPENDENCIES
   omniauth
   omniauth-twitter
   open_uri_redirections
+  rack-cors
   rails (= 4.2.6)
   rspec-rails
   sass-rails (~> 5.0)
